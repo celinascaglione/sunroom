@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 require('dotenv').config();
+var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -12,6 +13,8 @@ var casasRouter = require('./routes/casas');
 var locofiRouter = require('./routes/locofi');
 var restauracionesRouter = require('./routes/restauraciones');
 const { verify } = require('crypto');
+var loginRouter = require('./routes/admin/login');
+var adminRouter = require('./routes/admin/novedades');
 
 
 var app = express();
@@ -26,33 +29,53 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: '1379kzjzjj1379kzjzjj',
+  resave: false,
+  saveUninitialized: true
+}))
+
+secured = async (req, res, next) => {
+  try {
+    console.log(req.session.id_usuario);
+    if (req.session.id_usuario) {
+      next();
+    } else {
+      res.redirect('/admin/login')
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/casas', casasRouter);
 app.use('/locofi', locofiRouter);
 app.use('/restauraciones', restauracionesRouter);
-
+app.use('/admin/login', loginRouter);
+app.use('/admin/novedades', secured, adminRouter);
 
 /*armo 3 rutas*/
-app.get('/casas' , function(req, res){
+app.get('/casas', function (req, res) {
   res.render('hola soy la pagina casas')
 })
 
-app.get('/locofi' , function(req, res){
+app.get('/locofi', function (req, res) {
   res.render('hola soy la pagina locales y oficinas')
 })
 
-app.get('/restauraciones' , function(req, res){
+app.get('/restauraciones', function (req, res) {
   res.render('hola soy la pagina restauraciones')
 })
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
