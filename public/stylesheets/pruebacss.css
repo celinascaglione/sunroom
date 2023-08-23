@@ -97,9 +97,10 @@ html {
 
 .quien {
    background-image: url(../images/blanco2.webp);
-   opacity: 0.70
-      /*width: 100%;*/
-      /*margin-top: 3em;*/
+   opacity: 0.70;
+   background-size: cover;
+   /*width: 100%;*/
+   /*margin-top: 3em;*/
 }
 
 
@@ -136,7 +137,6 @@ html {
    gap: 10px;
 }
 
-/* Espacio entre las tarjetas */
 
 .card-img-top {
    object-fit: cover;
@@ -152,7 +152,7 @@ html {
 
 .mapa iframe {
    width: 100%;
-   aspect-ratio: 1.2
+   aspect-ratio: 1.2;
 }
 
 #contactanos h2 {
@@ -193,6 +193,27 @@ html {
    margin-left: 7.5em;
    margin-top: 3em;
    margin-bottom: 1em;
+}
+
+#tablita {
+   margin: 0;
+   padding: 0;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-image: url(../images/dibujoplanos1.jpg);
+}
+
+
+.custom-gray-btn {
+   background-color: #343a40;
+   border-color: #343a40;
+   color: white;
+}
+
+.nov {
+   font-family: 'Dosis', sans-serif;
+   color: #fff;
 }
 
 .scroll_section {
