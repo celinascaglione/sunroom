@@ -1,0 +1,27 @@
+<div class="container agrnov" style="margin:100px auto">
+    <div class="row">
+        <div class="col-6 offset-3 nov">
+            <h4>Agregar una nueva novedad</h4>
+            <br>
+            <form action="/admin/novedades/agregar" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Título" name="titulo">
+                </div><br>
+                <div class="form-group">
+                    <textarea type="text" class="form-control" placeholder="Subtítulo" name="subtitulo"></textarea>
+                </div><br>
+                <div class="form-group">
+                    <label>Imagen: <input type="file" class="form-control im" name="imagen" id="imagen" /></label>
+
+                </div><br>
+                <div class="form-group">
+                    <textarea type="text" class="form-control" placeholder="Cuerpo" name="cuerpo"></textarea>
+                </div><br>
+                <button type="submit" class="btn btn-marron" id="marron">Guardar</button>
+            </form>
+            {{#if error}}
+            <h5 id="me">{{message}}</h5>
+            {{/if}}
+        </div>
+    </div>
+</div>

@@ -1,37 +1,33 @@
-<!--
-<br>
+<div class="outer-container lilo" style="margin:50px auto">
 
-<div class="custom-container" id="tablita">
-
-    <div class="container">
+    <div class="inner-container lili">
         <div class="row">
             <div class="col">
                 <p class="text-end" style="float:right;">
-                    <span>HOLA {{persona}}!</span>
-                    <a href="/admin/login/logout" class="btn btn-sm custom-gray-btn">CERRAR SESION<i
+                    <span id="d">HOLA {{persona}}!</span>
+                    <a href="/admin/login/logout" class="btn btn-sm custom-brown-btn">CERRAR SESION<i
                             class="fas fa-sign-out-alt" aria-hidden="true"></i></a>
                 </p>
             </div>
         </div>
-
+        <br>
+        <br>
         <div class="row">
             <div class="col-7" style="margin-top:-9px ;">
                 <h2 class="nov">LISTADO DE NOVEDADES</h2>
             </div>
             <div class="col-5" style="float:right;">
-                <a href="" class="btn btn-dark float-end"><i class="fas fa-plus"></i>NUEVO</a>
+                <a href="/admin/novedades/agregar" class="btn btn-marron float-end"><i class="fas fa-plus"></i>NUEVO</a>
             </div>
         </div>
         <br>
-
         <div class="row justify-content-end">
             <div class="col-2">
                 <form class="form-inline d-flex justify-content-end" action="/admin/novedades" method="get">
                     <div class="input-group">
                         <input class="form-control" type="search" placeholder="Buscar" aria-label="Search" name="q"
                             {{#if q}} value="{{q}}" {{/if}} style="max-width: 200px;">
-
-                        <button class="btn btn-dark" type="submit">
+                        <button class="btn btn-marron" type="submit">
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -40,29 +36,28 @@
         </div>
     </div>
     <br>
-
-    <div class="container">
+    <div class="inner-container lila">
         <div class="row">
             <div class="col">
                 <table class="table">
                     <thead>
-                        <tr class="table-dark">
-                            <th scope="col">#</th>
-                            <th scope="col">Proyectos</th>
-                            <th scope="col" class="text-center">Imagen</th>
-                            <th scope="col" class="text-end">Acciones</th>
+                        <tr class="table-secondary">
+                            <th scope="col" id="lilu">#</th>
+                            <th scope="col" id="liluu">Proyectos</th>
+                            <th scope="col" class="text" id="liluuu">Imagen</th>
+                            <th scope="col" class="text-end" id="liluuuu">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         {{#each novedades}}
                         <tr>
-                            <th scope="row">{{id}}</th>
-                            <td>{{titulo}}</td>
-                            <td>{{subtitulo}}</td>
+                            <th scope="row" id="a">{{id}}</th>
+                            <td id="b">{{titulo}}</td>
+                            <td id="c">{{{imagen}}}</td>
                             <td class="text-end">
-                                <a href="/admin/novedades/modificar/{{id}}" class="btn btn-secondary">
+                                <a href="/admin/novedades/modificar/{{id}}" class="btn btn-marron">
                                     <i class="fas fa-pencil-alt"></i></a>
-                                <a href="/admin/novedades/eliminar/{{id}}" class="btn btn-secondary"><i
+                                <a href="/admin/novedades/eliminar/{{id}}" class="btn btn-marron"><i
                                         class="fas fa-trash"></i></a>
                             </td>
                         </tr>
@@ -70,61 +65,11 @@
                     </tbody>
                 </table>
                 {{#if is_search}}
-                {{#unless novedades.Length}}
+                {{#unless novedades.length}}
                 No se encontraron resultados para "<b>{{q}}</b>"
                 {{/unless}}
                 {{/if}}
             </div>
-        </div>
-    </div>
-</div>
-<br>-->
-<!--en subtitulos va imagenes-->
-
-<div class="container" style="" margin:50px auto>
-    <div class="row">
-        <div class="col">
-            <p class="text-end" style="float:right;">
-                <span>HOLA {{persona}}!</span>
-                <a href="/admin/login/logout" class="btn btn-sm custom-gray-btn">CERRAR SESION<i
-                        class="fas fa-sign-out-alt" aria-hidden="true"></i></a>
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-7" style="margin-top:-9px ;">
-            <h2 class="nov">LISTADO DE NOVEDADES</h2>
-        </div>
-        <div class="col-5" style="float:right;">
-            <a href="" class="btn btn-dark float-end"><i class="fas fa-plus"></i>NUEVO</a>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col">
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Proyectos</th>
-                        <th scope="col" class="text-end">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each novedades}}
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>va el titulo</td>
-                        <td class="text-end">
-                            <a href="/admin/novedades/modificar/{{id}}" class="btn btn-secondary">
-                                <i class="fas fa-pencil-alt"></i></a>
-                            <a href="/admin/novedades/eliminar/{{id}}" class="btn btn-secondary"><i
-                                    class="fas fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
         </div>
     </div>
 </div>
